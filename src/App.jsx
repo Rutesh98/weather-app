@@ -7,7 +7,7 @@ const App = () => {
     <div className="App">
 <WeatherApp/>
 <div className='copyright'>Code By Rutesh || All Rights Reserved ||</div>
-    </div>
+    </div> 
 
   )
 }
