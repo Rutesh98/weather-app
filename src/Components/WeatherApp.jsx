@@ -12,6 +12,11 @@ import wind_icon from '../Components/assets/wind.png'
 
 
 const WeatherApp = () => {
+
+    let api_key = "e8c59bee62f607752a7f6bf013948237";
+
+    const [wicon, setWicon] = useState(cloud_icon);
+// Define a mapping from weather codes to icon variables
     const weatherIconMap = {
         '01d': clear_icon,
         '01n': clear_icon,
@@ -27,12 +32,9 @@ const WeatherApp = () => {
         '10n': rain_icon,
         '13d': snow_icon,
         '13n': snow_icon,
+        // Default case can be handled outside the map
     };
 
-
-    let api_key = "e8c59bee62f607752a7f6bf013948237";
-
-    const [wicon, setWicon] = useState(cloud_icon);
 
     const search = async () => {
         const element = document.getElementsByClassName("cityInput");
@@ -53,8 +55,8 @@ const WeatherApp = () => {
         temperature[0].innerHTML = Math.floor(data.main.temp) + " °c";
         location[0].innerHTML = data.name
 
-        const icon = data.weather[0].icon || clear_icon;
-        setWicon(weatherIconMap[icon]);
+        const new_icon = weatherIconMap[data.weather[0].icon] || cloud_icon;
+        setWicon(new_icon);
     }
 
     return (
